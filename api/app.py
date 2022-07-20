@@ -1,3 +1,9 @@
-from flask import Flask, jsonify, request
+import pymongo as mongo 
+import numpy as np 
+import fastapi as fst 
 
-app = Flask(__name__)
+
+if '__name__' == '__main__':
+    pass
+
+

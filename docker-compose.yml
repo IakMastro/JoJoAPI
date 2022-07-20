@@ -6,17 +6,20 @@ networks:
 
 services:
   
-  api:
-  
-    build: api
+  postgre:
+    image: mongo:5.0
     
-    container_name: jojo-api
+    restart: on-failure
+
+    container_name: mongo
     
-    volumes:
-      - ./api:/api
-    
-    ports:
-      - "5000:5000"
-    
+    hostname: mongo
+
     networks:
       - jojo
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+
