@@ -1,20 +1,25 @@
 version: "3.9"
 
+networks:
+  jojo:
+    name: jojo 
+
 services:
-  api:
-    build: api
-    container_name: jojo-api
-    environment:
-      FLASK_APP: jojo
-      FLASK_HOST: 0.0.0.0
-      FLASK_ENV: development
-    volumes:
-      - ./api:/api
-    ports:
-      - "5000:5000"
+  
+  postgre:
+    image: mongo:5.0
+    
+    restart: on-failure
+
+    container_name: mongo
+    
+    hostname: mongo
+
     networks:
       - jojo
 
-networks:
-  jojo:
-    name: jojo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+
